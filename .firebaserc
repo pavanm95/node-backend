@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "sl-ekathandara-node"
+  },
+  "targets": {},
+  "etags": {
+    "sl-ekathandara-node": {
+      "extensionInstances": {}
+    }
+  },
+  "dataconnectEmulatorConfig": {}
+}

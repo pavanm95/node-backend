@@ -14,13 +14,13 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({ origin: true }));
 
 // Routes
-app.use('/api', initRoutes);
-app.use('/api', storyRoutes);
-app.use('/api', categoryRoutes);
-app.use('/api', contentRoutes);
+app.use('/init', initRoutes);
+app.use('/story', storyRoutes);
+app.use('/category', categoryRoutes);
+app.use('/content', contentRoutes);
 
 // Error Middleware
 app.use(errorHandler);
