@@ -1,0 +1,9 @@
+functions/node_modules/
+*.local
+functions/.env
+.DS_Store
+firebase-debug.log
+ui-debug.log
+.firebaserc
+firebase.json
+functions/package-lock.json
