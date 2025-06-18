@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk');
-const Product = require('../models/productModel');
+const Content = require('../models/contentModel');
 
 AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY,
@@ -8,11 +8,11 @@ AWS.config.update({
 });
 const s3 = new AWS.S3();
 
-const getAllProducts = async () => {
-    return await Product.find();
+const getAllContents = async () => {
+    return await Content.find();
 };
 
-const createProduct = async (data) => {
+const createContent = async (data) => {
     const file = data.file;
     const {id, name, description} = data.body;
     const params = {
@@ -26,12 +26,12 @@ const createProduct = async (data) => {
         const data = await s3.upload(params).promise();
         const fileUrl = data.Location;
 
-        return await Product.create({
+        return await Content.create({
             id: id,
             name: name,
             description: description,
-            productImgName: file.originalname,
-            productImgUrl: fileUrl
+            contentName: file.originalname,
+            contentUrl: fileUrl
         });
     } catch (error) {
         console.error('Error uploading file:', error);
@@ -39,4 +39,4 @@ const createProduct = async (data) => {
     }
 };
 
-module.exports = { getAllProducts, createProduct };
+module.exports = { getAllContents, createContent };
